@@ -9,10 +9,18 @@ hi!
 
 == Requirements
 
+* Python v.?+
+* MySQL for Python(Debian: python-mysql, http://sourceforge.net/projects/mysql-python/)
+* Python Imaging Library (Debian: python-imaging, http://www.pythonware.com/products/pil/)
+* Python GeoIP (Debian: python-geoip, )
+* a MySQL Server (Debian: mysql-server, http://dev.mysql.com)
+
 == Installation
 
 == Configuration
 
 == Disclaimer
 
-This product includes GeoLite data created by MaxMind, available from http://www.maxmind.com/.
+== Third-party tools
+
+* Maxmind: This product includes GeoLite data created by MaxMind, available from http://www.maxmind.com/.

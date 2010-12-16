@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# by Thomas Steinbrenner
 
 import ConfigParser		# for config parsing
 import sys				# for argument passing
@@ -56,6 +55,7 @@ else:
 
 ############## TODO
 status = 'idk'
+##############
 
 # check ip_address
 ip_address_re = re.match('^([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})$', sys.argv[1])

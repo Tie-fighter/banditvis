@@ -11,7 +11,7 @@ def download_database():
 	os.system("gunzip GeoLiteCity.dat.gz")
 	exit()
 
-filename = "orf.html"
+filename = "GeoLiteCity.dat"
 if os.path.isfile(filename) == False:
 	download_database()
 else:
