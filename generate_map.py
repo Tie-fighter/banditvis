@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# This file is part of Banditvis and licensed under GNU LGPL.
 
 import MySQLdb			# for DB interaction
 import GeoIP			# for Location Lookup

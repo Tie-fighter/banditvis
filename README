@@ -2,6 +2,7 @@ README for Banditvis
 ====================
 Thomas Steinbrenner <thomas@thomas-steinbrenner.net>
 v0.1, December 2010
+This software is licensed under the GNU Lesser General Public License.
 
 == General
 
@@ -13,14 +14,28 @@ hi!
 * MySQL for Python(Debian: python-mysql, http://sourceforge.net/projects/mysql-python/)
 * Python Imaging Library (Debian: python-imaging, http://www.pythonware.com/products/pil/)
 * Python GeoIP (Debian: python-geoip, )
-* a MySQL Server (Debian: mysql-server, http://dev.mysql.com)
+* Python Mapnik (Debian: python-mapnik, http://mapnik.org/)
+* a MySQL Server (Debian: mysql-server, http://dev.mysql.com/)
 
 == Installation
 
 == Configuration
 
+== Usage
+
 == Disclaimer
 
-== Third-party tools
+This software is licensed under the GNU Lesser General Public License.
+This project follows no commercial interests whatsoever and is purely done in my spare time.
+I cannot be held responsible for harm or damage done by using this software.
+Also like the authors of third party tools used in this project, I cannot guarantee the accuracy of produced outputs. (So please don't invade countries because of wrong boarder data e.g.)
 
-* Maxmind: This product includes GeoLite data created by MaxMind, available from http://www.maxmind.com/.
+== Third-party tools
+=== Redistributed
+
+* (data/shapes/*) World Borders Shape file from http://thematicmapping.org/downloads/world_borders.php
+
+
+=== Used
+
+* (data/GeoIP/*) Maxmind: This product includes GeoLite data created by MaxMind, available from http://www.maxmind.com/

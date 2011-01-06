@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# This file is part of Banditvis and licensed under GNU LGPL.
 
 import sys				# for argument passing
 import re				# for ip_address checking
@@ -44,8 +45,9 @@ for group in ip_address_re.groups():
 # normalize ip
 ip_address = str(int(ip_address_re.group(1))) + '.' + str(int(ip_address_re.group(2))) + '.' + str(int(ip_address_re.group(3))) + '.' + str(int(ip_address_re.group(4)))
 
+
 # connect to the db
-db = MySQLdb.connect(db_host , db_user, db_password, db_db)
+db = MySQLdb.connect(db_host , db_user, db_password, db_database)
 cursor = db.cursor()
 
 # increase count

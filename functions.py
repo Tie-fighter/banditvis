@@ -1,10 +1,20 @@
 #!/bin/usr/env python
+# This file is part of Banditvis and licensed under GNU LGPL.
 
 import ConfigParser		# read_config, 
 
+db_host = ''
+db_user = ''
+db_password = ''
+db_database = ''
 
 
 def read_config():
+
+	global db_host
+	global db_user
+	global db_password
+	global db_database
 
 	# check config
 	config = ConfigParser.ConfigParser()
@@ -38,5 +48,5 @@ def read_config():
 		print_usage()
 		exit()
 	else:
-		db_db = config.get('mySQL', 'database')
+		db_database = config.get('mySQL', 'database')
 	return
