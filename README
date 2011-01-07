@@ -10,12 +10,18 @@ hi!
 
 == Requirements
 
-* Python v.?+
-* MySQL for Python(Debian: python-mysql, http://sourceforge.net/projects/mysql-python/)
-* Python Imaging Library (Debian: python-imaging, http://www.pythonware.com/products/pil/)
-* Python GeoIP (Debian: python-geoip, )
-* Python Mapnik (Debian: python-mapnik, http://mapnik.org/)
-* a MySQL Server (Debian: mysql-server, http://dev.mysql.com/)
+* fail2ban
+
+* Python >= 2.5.2 (Debian: python, http://www.python.org/ )
+* Python GeoIP >= 1.2.1 (Debian: python-geoip, http://www.maxmind.com/app/python/)
+* Python Mapnik >= 0.5.1 (Debian: python-mapnik, http://mapnik.org/)
+
+* PostgreSQL >= 8.3.12 (Debian: postgresql, http://www.postgresql.org/)
+* PostGIS >= 1.3.3 (Debian: postgresql-8.3-postgis, http://postgis.refractions.net/ )
+
+* ? Python Imaging Library (Debian: python-imaging, http://www.pythonware.com/products/pil/)
+* ? MySQL for Python(Debian: python-mysql, http://sourceforge.net/projects/mysql-python/)
+* ? a MySQL Server (Debian: mysql-server, http://dev.mysql.com/)
 
 == Installation
 
@@ -28,7 +34,7 @@ hi!
 This software is licensed under the GNU Lesser General Public License.
 This project follows no commercial interests whatsoever and is purely done in my spare time.
 I cannot be held responsible for harm or damage done by using this software.
-Also like the authors of third party tools used in this project, I cannot guarantee the accuracy of produced outputs. (So please don't invade countries because of wrong boarder data e.g.)
+Also like the authors of third party tools used in this project, I cannot guarantee the accuracy of produced outputs. (So please don't invade countries because of wrong boarder data e.g. ;) )
 
 == Third-party tools
 === Redistributed
