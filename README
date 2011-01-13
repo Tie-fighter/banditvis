@@ -24,9 +24,18 @@ In detail it uses fail2ban to detect, GeoIP to locate and Mapnik to visualise.
 
 == Installation
 
+If you know your way around Unix, it should be self explaining.
+In case you need help just contact me.
+
+I'm working on a guide.
+
 == Configuration
 
+TODO
+
 == Usage
+
+TODO
 
 == Disclaimer
 
