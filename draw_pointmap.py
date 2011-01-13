@@ -21,8 +21,10 @@ style0.rules.append(rule0)
 ### Data Style
 style1 = mapnik.Style()
 rule1 = mapnik.Rule()
-rule1.symbols.append(mapnik.PointSymbolizer('attacker.png', 'png', 5, 5))
-#rule1.symbols.append(mapnik.ShieldSymbolizer('location','DejaVu Sans Bold', 10, mapnik.Color('#000000'),'attacker.png', 'png', 5, 5))
+points = mapnik.PointSymbolizer('attacker.png', 'png', 5, 5)
+points.allow_overlap = True
+rule1.symbols.append(points)
+#rule1.symbols.append(mapnik.ShieldSymbolizer('ip_address','DejaVu Sans Bold', 10, mapnik.Color('#000000'),'attacker.png', 'png', 5, 5))
 style1.rules.append(rule1)
 
 ### Add styles
