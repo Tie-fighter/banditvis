@@ -11,10 +11,11 @@ def download_database():
 	print 'Downloading...'
 	urllib.urlretrieve ("http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz", "GeoLiteCity.dat.gz")
 	os.system("gunzip GeoLiteCity.dat.gz")
-	os.system("rm GeoLiteCity.dat.gz")
+	os.system("mv GeoLiteCity.dat data/GeoIPGeoLiteCity.dat")
+	
 	exit()
 
-filename = "/data/GeoIP/GeoLiteCity.dat"
+filename = "data/GeoIP/GeoLiteCity.dat"
 if os.path.isfile(filename) == False:
 	download_database()
 else:

@@ -1,18 +1,21 @@
 #!/usr/bin/env python
 # This file is part of Banditvis and licensed under GNU LGPL.
 
-import sys				# for argument passing
-import re				# for ip_address checking
-import MySQLdb			# for DB interaction
-import time				# for getting the time
+import sys					# for argument passing
+import os					# for exit code
+import re					# for ip_address checking
+import GeoIP				# for coord lookup
+import psycopg				# for interaction with Postgres
+import time					# for getting the time
 
-from functions import *		# import our own functions
+from my_functions import *		# import our own functions
 
 def print_usage():
 	print 'USAGE: add_bandit.py ip_address [OFFENCE]'
 	print 'additional configuration: config.ini'
 
-read_config()
+db = DbConn()
+db.read_config()
 
 # check arguments
 if (len(sys.argv) < 2 or len(sys.argv) > 4):
@@ -45,13 +48,25 @@ for group in ip_address_re.groups():
 # normalize ip
 ip_address = str(int(ip_address_re.group(1))) + '.' + str(int(ip_address_re.group(2))) + '.' + str(int(ip_address_re.group(3))) + '.' + str(int(ip_address_re.group(4)))
 
+# lookup bandit
+gi = GeoIP.open("data/GeoIP/GeoLiteCity.dat", GeoIP.GEOIP_STANDARD)
+
+record =  gi.record_by_addr(ip_address)
+if record != None:
+	lon = record['longitude']
+	lat = record['latitude']
+else:
+	lon = 0
+	lat = 0
 
 # connect to the db
-db = MySQLdb.connect(db_host , db_user, db_password, db_database)
-cursor = db.cursor()
+db.conn = psycopg.connect(host = db.host, user = db.user, password = db.password, database = db.database)
+db.cursor = db.conn.cursor()
 
 # increase count
 now = time.strftime('%Y-%m-%d %H:%M:%S')
-cursor.execute("INSERT INTO `bandits` (`key`, `ip_address`, `offence`, `count`, `status`, `last_seen`) VALUES ( '"+ip_address+'_'+offence+"', '"+ip_address+"', '"+offence+"', '1', '"+status+"', '"+now+"') ON DUPLICATE KEY UPDATE `count` = `count` + 1;")
 
-db.close()
+db.cursor.execute("SELECT add_bandit('"+ip_address+"_"+offence+"', '"+ip_address+"', '"+offence+"', '"+status+"', '"+now+"', '"+str(lon)+" "+str(lat)+"'); COMMIT;")
+
+# finished
+db.conn.close()
