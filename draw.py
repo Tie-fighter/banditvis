@@ -4,7 +4,7 @@
 import mapnik			# for drawing the map
 
 # Instantiate a map object with given width, height and spatial reference system
-m = mapnik.Map(2400, 1158, "+proj=latlong +datum=WGS84")
+m = mapnik.Map(600, 289, "+proj=latlong +datum=WGS84")
 
 # Set background colour to 'steelblue'.  
 # You can use 'named' colours, #rrggbb, #rgb or rgb(r%,g%,b%) format
@@ -21,7 +21,7 @@ style0.rules.append(rule0)
 ### Data Style
 style1 = mapnik.Style()
 rule1 = mapnik.Rule()
-points = mapnik.PointSymbolizer('attacker_1.png', 'png', 7, 7)
+points = mapnik.PointSymbolizer('attacker.png', 'png', 5, 5)
 points.allow_overlap = True
 rule1.symbols.append(points)
 #rule1.symbols.append(mapnik.ShieldSymbolizer('ip_address','DejaVu Sans Bold', 10, mapnik.Color('#000000'),'attacker.png', 'png', 5, 5))
@@ -50,7 +50,6 @@ m.layers.append(layer1)
 m.zoom_to_box(layer0.envelope())
 
 ### Write file
-mapnik.render_to_file(m,'output/world.png', 'png')
-mapnik.render_to_file(m,'/var/lib/banditvis/output/world.png', 'png')
+mapnik.render_to_file(m,'output/small.png', 'png')
 
 exit()

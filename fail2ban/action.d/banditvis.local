@@ -33,7 +33,7 @@ actioncheck =
 #          <time>  unix timestamp of the ban time
 # Values:  CMD
 #
-actionban = /root/banditvis/add_bandit.py <ip>
+actionban = cd /root/banditvis/ && ./add_bandit.py <ip>
 
 # Option:  actionunban
 # Notes.:  command executed when unbanning an IP. Take care that the

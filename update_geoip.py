@@ -9,10 +9,8 @@ import time
 
 def download_database():
 	print 'Downloading...'
-	urllib.urlretrieve ("http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz", "GeoLiteCity.dat.gz")
-	os.system("gunzip GeoLiteCity.dat.gz")
-	os.system("mv GeoLiteCity.dat data/GeoIPGeoLiteCity.dat")
-	
+	urllib.urlretrieve ("http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz", "/data/GeoIP/GeoLiteCity.dat.gz")
+	os.system("gunzip /data/GeoIP/GeoLiteCity.dat.gz")
 	exit()
 
 filename = "data/GeoIP/GeoLiteCity.dat"

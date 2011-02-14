@@ -5,7 +5,7 @@ import sys					# for argument passing
 import os					# for exit code
 import re					# for ip_address checking
 import GeoIP				# for coord lookup
-import psycopg				# for interaction with Postgres
+import psycopg2				# for interaction with Postgres
 import time					# for getting the time
 
 from my_functions import *		# import our own functions
@@ -60,7 +60,7 @@ else:
 	lat = 0
 
 # connect to the db
-db.conn = psycopg.connect(host = db.host, user = db.user, password = db.password, database = db.database)
+db.conn = psycopg2.connect(host = db.host, user = db.user, password = db.password, database = db.database)
 db.cursor = db.conn.cursor()
 
 # increase count

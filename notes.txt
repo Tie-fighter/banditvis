@@ -1,0 +1,23 @@
+WGS84 == SRID 4326
+
+#Debian 5.x
+
+psql -d banditvis -f /usr/share/postgresql-8.3-postgis/lwpostgis.sql
+psql -d banditvis -f /usr/share/postgresql-8.3-postgis/spatial_ref_sys.sql
+SELECT AddGeometryColumn (...);
+
+#Debian 6.0
+
+psql -d banditvis -f /usr/share/postgresql/8.4/contrib/postgis-1.5/postgis.sql
+psql -d banditvis -f /usr/share/postgresql/8.4/contrib/postgis-1.5/spatial_ref_sys.sql
+
+CREATE TABLE bandits (
+    key text NOT NULL,
+    ip_address inet,
+    offence text,
+    count bigint DEFAULT 1,
+    last_seen timestamp with time zone,
+    status text
+);
+
+SELECT AddGeometryColumn ('bandits', 'location', 4326, 'POINT', 2);
