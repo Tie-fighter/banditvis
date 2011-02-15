@@ -1,0 +1,38 @@
+INSTALL for Banditvis
+====================
+Thomas Steinbrenner <thomas@thomas-steinbrenner.net>
+v0.2, February 2011
+This software is licensed under the GNU Lesser General Public License.
+
+== Requirements
+
+see README
+
+== Installation
+
+. Postgres:
+. Switch to the DBadmin. (Run: su postgres )
+. Create a user. (Execute: "CREATE USER user WITH PASSWORD 'password';" )
+. Create a database. (Execute: "CREATE DATABASE database;" )
+. Update banditvis/config.ini
+. Change owner. (Execute: "ALTER DATABASE database OWNER TO user;" )
+. Load postgis extensions. (Debian: psql -d database -f /usr/share/postgresql-8.3-postgis/lwpostgis.sql )
+. Load spatial reference system extensions. (Debian: psql -d banditvis -f /usr/share/postgresql/8.4/contrib/postgis-1.5/spatial_ref_sys.sql )
+. Add tables. (Execute: "CREATE TABLE bandits (key text NOT NULL, ip_address inet, offence text, count bigint DEFAULT 1, last_seen timestamp with time zone, status text);" )
+. Add a geometry column. (Execute: "SELECT AddGeometryColumn ('bandits', 'location', 4326, 'POINT', 2);" )
+
+. GeoIP:
+. Download the latest GeoLiteCity.dat database to data/GeoIP/ (Run: ./update_geoip.py)
+
+. Webserver:
+. Create the directory /var/lib/banditvis/output
+. Create an Alias from /var/lib/banditvis/output to a location in your webroot.
+
+. fail2ban: 
+. Copy the configuration lines from banditvis/fail2ban/jail.local to your local jail.local file.
+. Link or copy the files from banditvis/fail2ban/action.d/ and banditvis/banditvis/filter.d/ to the corresponding local folders.
+. Restart or reload fail2ban.
+
+. cronjob:
+. add a cronjob that runs draw_pointmap.py
+. (optional) add a cronjob that runs update_geoip.py

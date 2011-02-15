@@ -13,7 +13,7 @@ In detail it uses fail2ban to detect, GeoIP to locate and Mapnik to visualise.
 
 == Requirements
 
-* fail2ban
+* fail2ban (Debian: fail2ban, http://www.fail2ban.org/ )
 
 * Python >= 2.6.6 (Debian: python, http://www.python.org/ )
 * Python GeoIP >= 1.2.4 (Debian: python-geoip, http://www.maxmind.com/app/python/)
@@ -25,30 +25,31 @@ In detail it uses fail2ban to detect, GeoIP to locate and Mapnik to visualise.
 
 == Installation
 
-If you know your way around Unix, it should be self explaining.
-In case you need help just contact me.
-
-I'm working on a guide.
+see INSTALL
+If you are having trouble, please don't hesitate to contact me!
 
 == Configuration
 
-TODO
+* Customise config.ini
 
 == Usage
 
-TODO
+* add_bandit.py ip_address [offence]: add an attack to the database.
+* draw_pointmap.py: draw the visualisation.
+* update_geoip.py: Try to download a new GeoIP database.
 
 == Disclaimer
 
 This software is licensed under the GNU Lesser General Public License.
-This project follows no commercial interests whatsoever and is purely done in my spare time.
-I cannot be held responsible for harm or damage done by using this software.
-Also like the authors of third party tools used in this project, I cannot guarantee the accuracy of produced outputs. (So please don't invade countries because of wrong border data e.g. ;) )
+This project follows no commercial interests whatsoever and is purely done in the author's spare time.
+The author cannot be held responsible for harm or damage done by using this software.
+Also like the authors of third party tools used in this project, the author cannot guarantee the accuracy of produced outputs. (So please don't invade countries because of wrong border data e.g. ;) )
 
 == Third-party tools
 === Redistributed
 
 * (data/shapes/*) World Borders Shape file from http://thematicmapping.org/downloads/world_borders.php
+* (fonts/LinLibertine_Bd-4.1.5) Linux Libertine Font from http://sourceforge.net/projects/linuxlibertine/
 
 
 === Used
