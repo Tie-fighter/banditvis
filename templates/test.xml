@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Map>
+<Map bgcolor="#1A064F" srs="+proj=latlong +datum=WGS84">
+	
+	<Style name="Map Style">
+		<Rule>
+			<PolygonSymbolizer> <!-- cannot use attributes, mapnik bug, already fixed in Mapnik2.0 -->
+				<CssParameter name="fill">#0080ff</CssParameter>
+			</PolygonSymbolizer>
+			<LineSymbolizer>
+     			<CssParameter name="stroke">#00c0ff</CssParameter>
+				<CssParameter name="stroke-width">1.0</CssParameter>
+			</LineSymbolizer>
+		</Rule>
+	</Style>
+
+	<Style name="Data Style">
+		<Rule>
+			<Filter>[count] = 1</Filter>
+			<PointSymbolizer file="../images/cross_5x5_orange.png" width="5" height="5" type="png" allow_overlap="true" />
+		</Rule>
+
+		<Rule>
+			<Filter>[count] &gt; 1</Filter>
+			<ShieldSymbolizer file="../images/cross_5x5_red.png" name="count" dx="6" fill="#ffffff" face_name="DejaVu Sans Bold" />
+		</Rule>	
+	</Style>
+
+</Map>

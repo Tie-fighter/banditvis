@@ -8,4 +8,4 @@ action = banditvis
          
 logpath = /var/log/fail2ban.log
 maxretry = 0
-bantime = 1
+bantime = -1

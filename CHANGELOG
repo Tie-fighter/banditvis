@@ -3,6 +3,7 @@
 * Updated development environment to Debian 6.0
 * Updated packages and adapted sourcecode
 * Added Text(rendertime, attack-/ip-count) to the map
+* Switched to xml-configuration
 
 == v0.1 - January 2011
 
