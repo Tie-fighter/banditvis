@@ -35,7 +35,6 @@ m.layers.append(layer1)
 #m.zoom_to_box(layer0.envelope())
 m.zoom_to_box(mapnik.Envelope(-180.0,-90.0,180.0,83.623596))
 
-
 ### Write file
 mapnik.render_to_file(m,'output/world.png', 'png')
 
@@ -57,17 +56,25 @@ count_ips = int(db.cursor.fetchone()[0])
 im = Image.open('output/world.png')
 draw = ImageDraw.Draw(im)
 font = ImageFont.truetype('fonts/LinLibertine_Bd-4.1.5.otf', 20)
+
 ### Time of Render
 draw.rectangle((5,5, 300,50), outline = (255,255,255))
 draw.text((10, 5), time.strftime("Rendered: %d.%m.%Y %H:%M:%S GMT", time.gmtime()), (255,255,255), font=font)
 draw.text((10, 25), str(count_attacks) + " attacks / "+ str(count_ips) +" IPs", (255,255,255), font=font)
 
-###
-#draw.rectangle((20,250, 350,1000), outline = (0,0,0))
-#draw.text((25, 250), "more metadata...", (0,0,0), font=font)
+### Legend
+draw.rectangle((20,250, 350,1000), outline = (255,255,255))
+#1
+draw.text((37, 250), "1 attack", (255,255,255), font=font)
+im1 = Image.open('images/cross_5x5_orange.png')
+im.paste(im1, (27, 260), im1)
+#2
+draw.text((37, 270), "more than 1 attack", (255,255,255), font=font)
+im2 = Image.open('images/cross_5x5_red.png')
+im.paste(im2, (27, 280), im2)
 
 ### Write file
-im.save('output/world.png')
+#im.save('output/world.png')
 im.save('/var/lib/banditvis/output/world.png')
 
 exit()
