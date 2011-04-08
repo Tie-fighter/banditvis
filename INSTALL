@@ -26,7 +26,8 @@ see README
 
 . Webserver:
 . Create the directory /var/lib/banditvis/output
-. Create an Alias from /var/lib/banditvis/output to a location in your webroot.
+. Create an Alias from /var/lib/banditvis/output to (banditvis/output/) in your webroot.
+. Copy the content of interactive/ to (banditvis/) in your webroot.
 
 . fail2ban: 
 . Copy the configuration lines from banditvis/fail2ban/jail.local to your local jail.local file.

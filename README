@@ -38,6 +38,7 @@ If you are having trouble, please don't hesitate to contact me!
 * add_bandit.py ip_address [offence]: add an attack to the database.
 * draw_pointmap.py: draw the visualisation.
 * update_geoip.py: Try to download a new GeoIP database.
+* write_to_kml.py: Write the current Databays to a .kml file.
 
 == Disclaimer
 
@@ -55,3 +56,4 @@ Also like the authors of third party tools used in this project, the author cann
 === Used
 
 * (data/GeoIP/*) Maxmind: This product includes GeoLite data created by MaxMind, available from http://www.maxmind.com/
+* OpenLayers: http://openlayers.org/

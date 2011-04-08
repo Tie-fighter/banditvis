@@ -4,6 +4,7 @@
 * Updated packages and adapted sourcecode
 * Added Text(rendertime, attack-/ip-count) to the map
 * Switched to xml-configuration
+* Added an interactive version
 
 == v0.1 - January 2011
 
