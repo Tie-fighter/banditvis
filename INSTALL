@@ -26,14 +26,13 @@ see README
 
 . Webserver:
 . Create the directory /var/lib/banditvis/output
-. Create an Alias from /var/lib/banditvis/output to (banditvis/output/) in your webroot.
-. Copy the content of interactive/ to (banditvis/) in your webroot.
+. Create an Alias from /var/lib/banditvis/output to <webroot>/banditvis/output/ .
+. Copy the content of interactive/ to <webroot>/banditvis/ .
 
 . fail2ban: 
-. Copy the configuration lines from banditvis/fail2ban/jail.local to your local jail.local file.
-. Link or copy the files from banditvis/fail2ban/action.d/ and banditvis/banditvis/filter.d/ to the corresponding local folders.
+. Add "&& (cd /<your-banditvis-dir>/ && ./add_bandit.py <ip> <name>)" to the "actionban"-line of your fail2ban configuration
 . Restart or reload fail2ban.
 
 . cronjob:
-. add a cronjob that runs draw_pointmap.py
+. add a cronjob that runs draw_pointmap.py && write_kml.py
 . (optional) add a cronjob that runs update_geoip.py

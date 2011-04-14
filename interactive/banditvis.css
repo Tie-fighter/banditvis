@@ -1,0 +1,11 @@
+#map{
+	border: 1px solid black;
+}
+
+.Popup{
+	background-color:yellow;
+	border: 1px solid black;
+}
+.PopupContent{
+	overflow:visible;
+}
