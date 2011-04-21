@@ -25,10 +25,10 @@ if (len(sys.argv) < 2 or len(sys.argv) > 4):
 if len(sys.argv) == 3:
 	offence = sys.argv[2]
 else:
-	offence = '?'
+	offence = 'unknown'
 
 ############## TODO
-status = 'idk'
+status = 'unknown'
 ##############
 
 # check ip_address
