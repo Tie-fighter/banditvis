@@ -1,10 +1,11 @@
-== v0.2 - February 2011
+== v0.2 - April 2011
 
 * Updated development environment to Debian 6.0
 * Updated packages and adapted sourcecode
 * Added Text(rendertime, attack-/ip-count) to the map
 * Switched to xml-configuration
 * Added an interactive version
+* Added a lot of stuff to make the interactive version work
 
 == v0.1 - January 2011
 
