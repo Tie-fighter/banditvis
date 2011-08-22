@@ -36,7 +36,7 @@ m.layers.append(layer1)
 m.zoom_to_box(mapnik.Envelope(-180.0,-90.0,180.0,83.623596))
 
 ### Write file
-mapnik.render_to_file(m,'output/world.png', 'png')
+mapnik.render_to_file(m,'/var/lib/banditvis/output/world.png', 'png')
 
 ##### Get Metadata
 
@@ -53,7 +53,7 @@ count_ips = int(db.cursor.fetchone()[0])
 
 ##### Insert Metadata
 
-im = Image.open('output/world.png')
+im = Image.open('/var/lib/banditvis/output/world.png')
 draw = ImageDraw.Draw(im)
 font = ImageFont.truetype('fonts/LinLibertine_Bd-4.1.5.otf', 20)
 
@@ -74,7 +74,6 @@ im2 = Image.open('images/cross_5x5_red.png')
 im.paste(im2, (27, 280), im2)
 
 ### Write file
-#im.save('output/world.png')
 im.save('/var/lib/banditvis/output/world.png')
 
 exit()

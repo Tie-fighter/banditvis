@@ -1,11 +1,37 @@
 #map{
 	border: 1px solid black;
+	height: 100%;
+	width: 100%;
 }
 
-.Popup{
-	background-color:yellow;
+#legend {
 	border: 1px solid black;
+	position: absolute;
+	overflow: hidden;
+	z-index: 1000000;
+	
+	top: 150px;
+	left: 15px;
+	width: 40px;
+	height: 70%;
+	
+	text-align: center;
+	
+	background-image: -ms-linear-gradient(top, hsl(0, 100%, 50%), hsl(120, 100%, 50%)); 
+	background-image: -moz-linear-gradient(top, red, yellow, green);
+	background-image: -o-linear-gradient(top, hsl(0,100%, 50%), hsl(120, 100%, 50%)); 
+	background-image: -webkit-linear-gradient(top, hsl(0, 100%, 50%), hsl(120, 100%, 50%)); 
+	background-image: linear-gradient(top, hsl(0, 100%, 50%), hsl(120, 100%, 50%));
 }
-.PopupContent{
-	overflow:visible;
+
+#legend_upper {
+	position:absolute;
+	top: 0px;
+	width: 100%
+}
+
+#legend_lower{
+	position:absolute;
+	bottom: 0px;
+	width: 100%
 }

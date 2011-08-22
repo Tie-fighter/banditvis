@@ -16,28 +16,35 @@ db.cursor.execute("SELECT DISTINCT offence FROM bandits;")
 offences = db.cursor.fetchall()
 
 ### Write .kml for every offence
+file1 = open("/var/lib/banditvis/output/offences.txt", "w")
 for offence in offences:
 	offence = offence[0]
-	file = open("/var/lib/banditvis/output/"+offence+".kml", "w")
-	### Print Header
-	file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-	file.write('<kml xmlns="http://www.opengis.net/kml/2.2">\n')
-	file.write('\t<Document>\n')
+	file2 = open("/var/lib/banditvis/output/"+offence+".kml", "w")
+
+	### Print Prefix
+	file2.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+	file2.write('<kml xmlns="http://www.opengis.net/kml/2.2">\n')
+	file2.write('\t<Document>\n')
 	
 	### Get and print Data
-	db.cursor.execute("SELECT ip_address, count, last_seen, ST_AsKML(location) FROM bandits WHERE offence = '"+offence+"'")
+	db.cursor.execute("SELECT ip_address, count, first_seen, last_seen, ST_AsKML(location) FROM bandits WHERE offence = '"+offence+"' ORDER BY last_seen ASC;")
 	rows = db.cursor.fetchall()
+	i = 0
 	for row in rows:
-		file.write('\t\t<Placemark>\n')
-		file.write('\t\t\t<name>'+row[0]+'</name>\n')
-		file.write('\t\t\t<description>offence: '+offence+', count: '+str(row[1])+', last_seen: '+str(row[2])+'</description>\n')
-		file.write('\t\t\t'+row[3]+'\n')
-		file.write('\t\t</Placemark>\n')
+		i = i+1
+		file2.write('\t\t<Placemark id="'+str(i)+'">\n')
+		file2.write('\t\t\t<name>'+row[0]+'</name>\n')
+		file2.write('\t\t\t<description>offence: '+offence+', count: '+str(row[1])+', first_seen: '+str(row[2])+', last_seen: '+str(row[3])+'</description>\n')
+		file2.write('\t\t\t'+row[4]+'\n')
+		file2.write('\t\t</Placemark>\n')
 
-	### Print Trailer
-	file.write('\t</Document>\n')
-	file.write('</kml>')
-	file.close
+	### Print Suffix
+	file2.write('\t</Document>\n')
+	file2.write('</kml>')
+	file2.close
+	file1.write(offence+'\n')
+
+file1.close 
 
 ### Finished
 exit()
