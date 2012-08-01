@@ -1,3 +1,7 @@
+== v0.3 - August 2012
+
+* fixed KML layers (used a deprecated function since last openlayers 2.12)
+
 == v0.2 - April 2011
 
 * Updated development environment to Debian 6.0
