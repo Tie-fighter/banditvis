@@ -76,14 +76,28 @@ function loadData() {
 /* Returns nothing */
 function loadKMLs(xmlHttpObject) {
 	Banditvis.dataLayers = new Array();
-	Banditvis.dataLayers.push(new OpenLayers.Layer.GML("Server", "server.kml", {format: OpenLayers.Format.KML}));
+
+	Banditvis.dataLayers.push(new OpenLayers.Layer.Vector("Server", {
+                protocol: new OpenLayers.Protocol.HTTP({
+                    url: "server.kml",
+                    format: new OpenLayers.Format.KML()
+                }),
+                strategies: [new OpenLayers.Strategy.Fixed()]
+            }));
 	
 	var responseLines=xmlHttpObject.responseText.split("\n")
 	for (var i in responseLines) {
 		if (responseLines[i] != "") {
-			Banditvis.dataLayers.push(new OpenLayers.Layer.GML(responseLines[i], "output/"+responseLines[i]+".kml", {format: OpenLayers.Format.KML}));
+			Banditvis.dataLayers.push(new OpenLayers.Layer.Vector(responseLines[i], {
+                protocol: new OpenLayers.Protocol.HTTP({
+                    url: "output/"+responseLines[i]+".kml",
+                    format: new OpenLayers.Format.KML()
+                }),
+                strategies: [new OpenLayers.Strategy.Fixed()]
+            }));
 		}
 	}
+
 
 	for (var i in Banditvis.dataLayers) {
 		Banditvis.map.addLayer(Banditvis.dataLayers[i]);
@@ -408,7 +422,6 @@ function arrayRemove(feature) {
 	}
 	return false;
 }
-
 
 
 

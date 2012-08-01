@@ -3,6 +3,28 @@
 
 import ConfigParser		# read_config, 
 
+
+class Config:
+
+	def read_config(self):
+		config = ConfigParser.ConfigParser()
+		config.read('config.ini')
+
+		if config.get('General', 'victim_dns') == '':
+			print 'ERROR: victim_dns not set'
+			print_usage()
+			exit()
+		else:
+			self.victim_dns = config.get('General', 'victim_dns')
+
+		if config.get('General', 'victim_ip') == '':
+			print 'ERROR: victim_dns not set'
+			print_usage()
+			exit()
+		else:
+			self.victim_ip = config.get('General', 'victim_ip')
+		
+
 class DbConn:
 	
 	def read_config(self):

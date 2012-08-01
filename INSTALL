@@ -18,32 +18,11 @@ see README
 . Change owner. (Execute: "ALTER DATABASE database OWNER TO user;" )
 . Load postgis extensions. (Debian: psql -d database -f /usr/share/postgresql-8.3-postgis/lwpostgis.sql )
 . Load spatial reference system extensions. (Debian: psql -d banditvis -f /usr/share/postgresql/8.4/contrib/postgis-1.5/spatial_ref_sys.sql )
-. Add tables. (Execute: "CREATE TABLE bandits (key text NOT NULL, ip_address inet, offence text, count bigint DEFAULT 1, last_seen timestamp with time zone, status text);" )
+. Add tables. (Execute: "CREATE TABLE bandits (key text NOT NULL, ip_address inet, offence text, count bigint DEFAULT 1, last_seen timestamp with time zone, status text);" ) #UPDATE
 . Add a geometry column. (Execute: "SELECT AddGeometryColumn ('bandits', 'location', 4326, 'POINT', 2);" )
 . Add the add_bandit function. (Execute:"
 
-CREATE FUNCTION add_bandit(key_v text, ip_address_v inet, offence_v text, status_v text, last_seen_v timestamp without time zone, coordinates_v text) RETURNS void
-    LANGUAGE plpgsql
-    AS $$BEGIN
-    LOOP
-        -- first try to update the key
-        UPDATE bandits SET count = count + 1 WHERE key = key_v;
-        IF found THEN
-            RETURN;
-        END IF;
-        -- not there, so try to insert the key
-        -- if someone else inserts the same key concurrently,
-        -- we could get a unique-key failure
-        BEGIN
-            INSERT INTO bandits (key, ip_address, offence, count, status, last_seen, location) VALUES ( key_v, ip_address_v, offence_v, 1, status_v, last_seen_v, ST_GeomFromText('POINT(' || coordinates_v || ')', 4326) );
-            RETURN;
-        EXCEPTION WHEN unique_violation THEN
-            -- do nothing, and loop to try the UPDATE again
-        END;
-    END LOOP;
-END;$$;
-
-")
+#UPDATE
 
 . GeoIP:
 . Download the latest GeoLiteCity.dat database to data/GeoIP/ (Run: ./update_geoip.py)
